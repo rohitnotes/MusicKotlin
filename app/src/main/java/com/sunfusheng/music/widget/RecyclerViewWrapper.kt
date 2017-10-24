@@ -1,7 +1,6 @@
 package com.sunfusheng.music.widget
 
 import android.content.Context
-import android.support.annotation.LayoutRes
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -34,12 +33,14 @@ class RecyclerViewWrapper : FrameLayout {
     private var firstVisibleItemPosition: Int = RecyclerView.NO_POSITION
     private var lastVisibleItemPosition: Int = RecyclerView.NO_POSITION
 
-    constructor(context: Context) : super(context) {
+    constructor(context: Context) : this(context, null) {}
+
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0) {}
+
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initView(context)
         initListener()
     }
-
-    constructor(context: Context, attrs: AttributeSet) : this(context) {}
 
     private fun initView(context: Context) {
         var inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -119,14 +120,6 @@ class RecyclerViewWrapper : FrameLayout {
         emptyView?.setOnClickListener(emptyViewClickListener)
     }
 
-    fun setEmptyView(@LayoutRes layoutResource: Int) {
-        emptyStub?.layoutResource = layoutResource
-    }
-
-    fun setErrorView(@LayoutRes layoutResource: Int) {
-        errorStub.layoutResource = layoutResource
-    }
-
     fun setOnScrollListener(onScrollListener: OnScrollListener) {
         this.onScrollListener = onScrollListener
     }
@@ -136,5 +129,4 @@ class RecyclerViewWrapper : FrameLayout {
 
         fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int)
     }
-
 }
