@@ -16,6 +16,7 @@ class MainActivity : BaseActivity() {
 
         recyclerViewWrapper?.register(String::class.java, MusicItemViewBinder())
         recyclerViewWrapper?.setData(list)
+
     }
 
 }

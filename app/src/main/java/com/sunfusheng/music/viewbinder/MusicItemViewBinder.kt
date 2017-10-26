@@ -24,6 +24,6 @@ class MusicItemViewBinder : ItemViewBinder<String, MusicItemViewBinder.ViewHolde
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var tvTitle: TextView = view.findViewById(R.id.tv_title) as TextView
+        var tvTitle: TextView = view.findViewById(R.id.tv_title)
     }
 }
