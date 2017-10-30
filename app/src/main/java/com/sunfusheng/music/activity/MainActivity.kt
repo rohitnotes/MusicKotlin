@@ -1,8 +1,12 @@
 package com.sunfusheng.music.activity
 
 import android.os.Bundle
+import android.util.Log
 import com.sunfusheng.music.R
+import com.sunfusheng.music.http.Api
 import com.sunfusheng.music.viewbinder.MusicItemViewBinder
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -17,6 +21,12 @@ class MainActivity : BaseActivity() {
         recyclerViewWrapper?.register(String::class.java, MusicItemViewBinder())
         recyclerViewWrapper?.setData(list)
 
+        Api.instance.apiService.getMusicList(2, 10, 0)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    it.song_list.forEach { Log.d("--->", it.toString()) }
+                }, Throwable::printStackTrace)
     }
 
 }

@@ -12,12 +12,12 @@ class LogInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain?): Response? {
         val request = chain?.request()
-        Logger.d("log-api-request", request?.url().toString())
+        Logger.d("log-api-request: " + request?.url().toString())
 
         val response = chain?.proceed(request!!)
         val contentType = response?.body()?.contentType()
         val content = response?.body()?.string()
-        Logger.d("log-api-response", content)
+        Logger.d("log-api-response: " + content)
 
         return response?.newBuilder()
                 ?.body(ResponseBody.create(contentType, content!!))

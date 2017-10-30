@@ -15,11 +15,11 @@ import java.util.concurrent.TimeUnit
  */
 class Api private constructor() {
 
-    val apiService: ApiService
-
     companion object {
         val instance = Api()
     }
+
+    val apiService: ApiService
 
     init {
         val cacheDir = File(MainApplication.context.cacheDir, "HttpCache")
@@ -28,15 +28,17 @@ class Api private constructor() {
         val okHttpClientBuilder = OkHttpClient.Builder()
                 .connectTimeout(20, TimeUnit.SECONDS)
                 .addInterceptor(LogInterceptor())
+                .addInterceptor(HeaderInterceptor())
+                .addInterceptor(CacheInterceptor())
                 .addNetworkInterceptor(CacheInterceptor())
                 .cache(cache)
 
         val retrofitBuilder = Retrofit.Builder()
                 .client(okHttpClientBuilder.build())
-                .baseUrl(Constants.baseUrl)
+                .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
+                .build()
 
         apiService = retrofitBuilder.create(ApiService::class.java)
     }
