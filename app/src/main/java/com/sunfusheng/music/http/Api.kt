@@ -27,6 +27,8 @@ class Api private constructor() {
 
         val okHttpClientBuilder = OkHttpClient.Builder()
                 .connectTimeout(20, TimeUnit.SECONDS)
+                .addInterceptor(LogInterceptor())
+                .addNetworkInterceptor(CacheInterceptor())
                 .cache(cache)
 
         val retrofitBuilder = Retrofit.Builder()
