@@ -1,9 +1,9 @@
 package com.sunfusheng.music.activity
 
 import android.os.Bundle
-import android.util.Log
 import com.sunfusheng.music.R
 import com.sunfusheng.music.http.Api
+import com.sunfusheng.music.model.MusicModel
 import com.sunfusheng.music.viewbinder.MusicItemViewBinder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -15,17 +15,13 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val list = mutableListOf<String>()
-        (1..50).mapTo(list) { it.toString() + ".song" }
+        recyclerViewWrapper?.register(MusicModel::class.java, MusicItemViewBinder())
 
-        recyclerViewWrapper?.register(String::class.java, MusicItemViewBinder())
-        recyclerViewWrapper?.setData(list)
-
-        Api.instance.apiService.getMusicList(2, 10, 0)
+        Api.instance.apiService.getMusicList(2, 20, 0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    it.song_list.forEach { Log.d("--->", it.toString()) }
+                    recyclerViewWrapper.setData(it.song_list)
                 }, Throwable::printStackTrace)
     }
 

@@ -50,7 +50,6 @@
     <color name="transparent90_white">#E5ffffff</color>
     <color name="transparent100_white">#FFffffff</color>
 
-    <color name="bg">#FFF5F5F5</color>
-    <color name="divider_1">#e2e2e2</color>
-    <color name="divider_2">#e6e6e6</color>
+    <color name="placeholder">#00000000</color>
+    <color name="divider">#e2e2e2</color>
 </resources>

@@ -77,7 +77,7 @@ class RecyclerViewWrapper : FrameLayout {
         multiTypeAdapter.register(clazz, binder)
     }
 
-    fun setData(@NonNull items: MutableList<*>) {
+    fun setData(@NonNull items: List<*>) {
         multiTypeAdapter.items = items
         multiTypeAdapter.notifyDataSetChanged()
     }
