@@ -3,7 +3,7 @@ package com.sunfusheng.music.model
 /**
  * @author sunfusheng on 2017/10/30.
  */
-data class MusicModel(
+data class MusicItemModel(
         val song_id: String,
         val title: String,
         val author: String,

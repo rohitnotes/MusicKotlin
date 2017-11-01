@@ -31,8 +31,9 @@ class MusicTitleViewBinder : ItemViewBinder<BillboardModel, MusicTitleViewBinder
                         Observable.defer { Observable.just(ImageBlurUtil.blur(holder.ivPic)) }
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe({ holder.ivPicBg.setImageBitmap(it) },
-                                        Throwable::printStackTrace)
+                                .subscribe({
+                                    holder.ivPicBg.setImageBitmap(it)
+                                }, Throwable::printStackTrace)
                     }
                 }
         holder.tvMusicType.text = item.name

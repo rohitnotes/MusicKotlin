@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="112dp"
-    android:background="@color/transparent20"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="82dp"
+    android:background="@color/transparent20">
 
     <ImageView
         android:id="@+id/ivPicBg"
@@ -15,13 +15,13 @@
 
     <com.sunfusheng.glideimageview.GlideImageView
         android:id="@+id/ivPic"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="8dp"
         android:src="@color/placeholder"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="@dimen/item_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -41,8 +41,9 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="热歌榜"
-            android:textColor="@color/transparent100_white"
-            android:textSize="18sp"/>
+            android:textColor="@color/transparent80_white"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvUpdateTime"
@@ -52,7 +53,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="最近更新：2017-10-31"
-            android:textColor="@color/transparent80_white"
+            android:textColor="@color/transparent60_white"
             android:textSize="12sp"/>
     </LinearLayout>
 
@@ -60,11 +61,11 @@
         android:id="@+id/ivMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?attr/actionBarItemBackground"
         android:padding="@dimen/item_margin_big"
         android:src="@mipmap/ic_item_more_vertical"
-        android:background="?attr/actionBarItemBackground"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="invisible"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 </android.support.constraint.ConstraintLayout>

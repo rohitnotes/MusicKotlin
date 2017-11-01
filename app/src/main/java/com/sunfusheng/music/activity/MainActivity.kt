@@ -6,7 +6,7 @@ import com.sunfusheng.music.Constants
 import com.sunfusheng.music.R
 import com.sunfusheng.music.http.Api
 import com.sunfusheng.music.model.BillboardModel
-import com.sunfusheng.music.model.MusicModel
+import com.sunfusheng.music.model.MusicItemModel
 import com.sunfusheng.music.util.Util
 import com.sunfusheng.music.viewbinder.MusicItemViewBinder
 import com.sunfusheng.music.viewbinder.MusicTitleViewBinder
@@ -25,7 +25,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         recyclerViewWrapper.register(BillboardModel::class.java, MusicTitleViewBinder())
-        recyclerViewWrapper.register(MusicModel::class.java, MusicItemViewBinder())
+        recyclerViewWrapper.register(MusicItemModel::class.java, MusicItemViewBinder())
 
         Observable.defer { Observable.fromIterable(Constants.musicTypeList) }
                 .subscribeOn(Schedulers.io())
