@@ -5,34 +5,6 @@ package com.sunfusheng.music
  */
 object Constants {
 
-    val musicTypeList = listOf<MusicType>(
-            MusicType.NEW,
-            MusicType.HOT,
-            MusicType.BILLBOARD,
-            MusicType.ROCK,
-            MusicType.JAZZ,
-            MusicType.CHINESE,
-            MusicType.WESTERN,
-            MusicType.CLASSIC,
-            MusicType.LOVER,
-            MusicType.FILM,
-            MusicType.NET
-    )
-
-    enum class MusicType(val type: Int) {
-        NEW(1), //新歌
-        HOT(2), //热歌
-        BILLBOARD(8), //Billboard
-        ROCK(11), //摇滚
-        JAZZ(12), //爵士
-        CHINESE(20), //华语金曲
-        WESTERN(21), //欧美金曲
-        CLASSIC(22), //经典老歌
-        LOVER(23), //情歌对唱
-        FILM(24), //影视金曲
-        NET(25), //网络歌曲
-    }
-
     const val BASE_URL = "http://tingapi.ting.baidu.com/v1/restserver/"
 
     const val METHOD_MUSIC_LIST = "ting?method=baidu.ting.billboard.billList"
@@ -50,4 +22,32 @@ object Constants {
     const val PARAM_QUERY = "query"
 
     val REQUEST_SIZE = 10
+
+    enum class MusicType(val type: Int) {
+        NEW(1), //新歌
+        HOT(2), //热歌
+        BILLBOARD(8), //Billboard
+        ROCK(11), //摇滚
+        JAZZ(12), //爵士
+        CHINESE(20), //华语金曲
+        WESTERN(21), //欧美金曲
+        CLASSIC(22), //经典老歌
+        LOVER(23), //情歌对唱
+        FILM(24), //影视金曲
+        NET(25), //网络歌曲
+    }
+
+    val musicTypeList = listOf<MusicType>(
+            MusicType.NEW,
+            MusicType.HOT,
+            MusicType.BILLBOARD,
+            MusicType.ROCK,
+            MusicType.JAZZ,
+            MusicType.CHINESE,
+            MusicType.WESTERN,
+            MusicType.CLASSIC,
+            MusicType.LOVER,
+            MusicType.FILM,
+            MusicType.NET
+    )
 }

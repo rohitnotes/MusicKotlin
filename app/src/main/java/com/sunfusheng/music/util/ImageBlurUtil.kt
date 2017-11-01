@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
+import android.widget.ImageView
 
 /**
  * @author sunfusheng on 2017/11/1.
@@ -12,29 +13,27 @@ object ImageBlurUtil {
 
     private val BLUR_RADIUS = 50
 
-    fun blur(source: Drawable?): Bitmap? {
-        if (source == null) {
+    fun blur(imageView: ImageView): Bitmap? {
+        return blur(imageView.drawable)
+    }
+
+    fun blur(drawable: Drawable?): Bitmap? {
+        if (drawable == null) {
             return null
         }
 
-        val bitmap = drawableToBitmap(source)
+        return blur(drawableToBitmap(drawable))
+    }
+
+    fun blur(bitmap: Bitmap?): Bitmap? {
+        if (bitmap == null) {
+            return null
+        }
 
         return try {
             blur(bitmap, BLUR_RADIUS)
         } catch (e: Exception) {
             bitmap
-        }
-    }
-
-    fun blur(source: Bitmap?): Bitmap? {
-        if (source == null) {
-            return null
-        }
-
-        return try {
-            blur(source, BLUR_RADIUS)
-        } catch (e: Exception) {
-            source
         }
     }
 

@@ -28,7 +28,7 @@ class MusicTitleViewBinder : ItemViewBinder<BillboardModel, MusicTitleViewBinder
         holder.ivPic.loadImage(item.pic_s192, R.color.placeholder)
                 .listener { percent, isDone, exception ->
                     if (isDone) {
-                        Observable.defer { Observable.just(ImageBlurUtil.blur(holder.ivPic.drawable)) }
+                        Observable.defer { Observable.just(ImageBlurUtil.blur(holder.ivPic)) }
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe({ holder.ivPicBg.setImageBitmap(it) },
