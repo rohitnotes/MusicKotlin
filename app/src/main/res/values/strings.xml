@@ -1,6 +1,7 @@
 <resources>
 
-    <string name="app_name">云音乐</string>
+    <string name="app_name">福生云音乐</string>
 
     <string name="music_author_album">%s - %s</string>
+
 </resources>

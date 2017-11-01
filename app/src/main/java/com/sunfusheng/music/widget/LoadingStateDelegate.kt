@@ -8,7 +8,7 @@ import android.view.ViewStub
  */
 class LoadingStateDelegate {
 
-    enum class State(val value: Int) {
+    enum class State(val state: Int) {
         SUCCEED(0),
         LOADING(1),
         ERROR(2),
@@ -26,7 +26,7 @@ class LoadingStateDelegate {
     }
 
     fun setLoadingState(state: State): View? {
-        if (state.value < 0 || state.value >= viewHolder.size) {
+        if (state.state < 0 || state.state >= viewHolder.size) {
             return null
         }
 
@@ -34,12 +34,12 @@ class LoadingStateDelegate {
             view?.visibility = View.GONE
         }
 
-        if (viewHolder[state.value] == null) {
-            viewHolder[state.value] = viewStubHolder[state.value]?.inflate()
+        if (viewHolder[state.state] == null) {
+            viewHolder[state.state] = viewStubHolder[state.state]?.inflate()
         }
 
-        viewHolder[state.value]?.visibility = View.VISIBLE
+        viewHolder[state.state]?.visibility = View.VISIBLE
 
-        return viewHolder[state.value]
+        return viewHolder[state.state]
     }
 }

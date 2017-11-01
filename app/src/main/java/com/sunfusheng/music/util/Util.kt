@@ -10,57 +10,54 @@ import android.text.TextUtils
  */
 object Util {
 
-    // 判断网络是否可用
-    fun isNetworkAvailable(context: Context): Boolean {
-        try {
-            val connectivity = context.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            val info = connectivity.activeNetworkInfo
-            if (info != null && info.isConnected) {
-                if (info.state == NetworkInfo.State.CONNECTED) {
-                    return true
-                }
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return false
-        }
-
-        return false
+    /**
+     * 判断集合是否为空
+     */
+    fun isEmpty(collection: Collection<*>?): Boolean {
+        return collection == null || collection.isEmpty()
     }
 
-    // WiFi是否连接
+    /**
+     * 判断集合是否为非空
+     */
+    fun isNotEmpty(collection: Collection<*>): Boolean {
+        return !isEmpty(collection)
+    }
+
+    /**
+     * 判断网络是否可用
+     */
+    fun isNetworkAvailable(context: Context): Boolean {
+        val connectivityManager = context.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+        return networkInfo.isAvailable && networkInfo.state == NetworkInfo.State.CONNECTED
+    }
+
+    /**
+     * 判断WiFi是否连接
+     */
     fun isWiFiAvailable(context: Context): Boolean {
         val connectivityManager = context.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
-        return networkInfo != null && networkInfo.isAvailable && networkInfo.type == ConnectivityManager.TYPE_WIFI
+        return networkInfo.isAvailable && networkInfo.type == ConnectivityManager.TYPE_WIFI
     }
 
-    // 获取当前应用的版本号
+    /**
+     * 获取当前应用的版本号
+     */
     fun getVersionName(context: Context): String {
-        try {
-            val packageManager = context.applicationContext.packageManager
-            val packInfo = packageManager.getPackageInfo(context.applicationContext.packageName, 0)
-            val version = packInfo.versionName
-            if (!TextUtils.isEmpty(version)) {
-                return "V" + version
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
-        return "V1.0"
+        val packageManager = context.applicationContext.packageManager
+        val packageInfo = packageManager.getPackageInfo(context.applicationContext.packageName, 0)
+        val versionName = packageInfo.versionName
+        return if (!TextUtils.isEmpty(versionName)) "V" + versionName else "V1.0"
     }
 
-    // 获取当前应用的版本号
+    /**
+     * 获取当前应用的版本号
+     */
     fun getVersionCode(context: Context): Int {
-        try {
-            val packageManager = context.applicationContext.packageManager
-            val packInfo = packageManager.getPackageInfo(context.applicationContext.packageName, 0)
-            return packInfo.versionCode
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
-        return 1
+        val packageManager = context.applicationContext.packageManager
+        val packageInfo = packageManager.getPackageInfo(context.applicationContext.packageName, 0)
+        return packageInfo.versionCode
     }
 }

@@ -18,8 +18,7 @@ import me.drakeet.multitype.ItemViewBinder
 class MusicItemViewBinder : ItemViewBinder<MusicModel, MusicItemViewBinder.ViewHolder>() {
 
     override fun onCreateViewHolder(@NonNull inflater: LayoutInflater, @NonNull parent: ViewGroup): ViewHolder {
-        val view = inflater.inflate(R.layout.item_music, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(inflater.inflate(R.layout.item_music, parent, false))
     }
 
     override fun onBindViewHolder(@NonNull holder: ViewHolder, @NonNull item: MusicModel) {

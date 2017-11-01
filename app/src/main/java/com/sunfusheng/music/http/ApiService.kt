@@ -1,5 +1,6 @@
 package com.sunfusheng.music.http
 
+import com.sunfusheng.music.Constants
 import com.sunfusheng.music.model.MusicResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -12,7 +13,11 @@ import retrofit2.http.Query
 interface ApiService {
 
     @Headers("Cache-Control: public, max-age=600")
-    @GET("ting?method=baidu.ting.billboard.billList")
-    fun getMusicList(@Query("type") type: Int, @Query("size") size: Int, @Query("offset") offset: Int): Observable<MusicResponse>
+    @GET(Constants.METHOD_MUSIC_LIST)
+    fun getMusicList(
+            @Query(Constants.PARAM_TYPE) type: Int,
+            @Query(Constants.PARAM_SIZE) size: Int,
+            @Query(Constants.PARAM_OFFSET) offset: Int
+    ): Observable<MusicResponse>
 
 }
