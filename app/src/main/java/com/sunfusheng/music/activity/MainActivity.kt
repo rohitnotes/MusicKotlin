@@ -5,9 +5,11 @@ import android.text.TextUtils
 import com.sunfusheng.music.Constants
 import com.sunfusheng.music.R
 import com.sunfusheng.music.http.Api
-import com.sunfusheng.music.model.BillboardModel
+import com.sunfusheng.music.model.DividerItemModel
 import com.sunfusheng.music.model.MusicItemModel
+import com.sunfusheng.music.model.MusicTitleModel
 import com.sunfusheng.music.util.Util
+import com.sunfusheng.music.viewbinder.DividerItemViewBinder
 import com.sunfusheng.music.viewbinder.MusicItemViewBinder
 import com.sunfusheng.music.viewbinder.MusicTitleViewBinder
 import io.reactivex.Observable
@@ -24,8 +26,9 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerViewWrapper.register(BillboardModel::class.java, MusicTitleViewBinder())
+        recyclerViewWrapper.register(MusicTitleModel::class.java, MusicTitleViewBinder())
         recyclerViewWrapper.register(MusicItemModel::class.java, MusicItemViewBinder())
+        recyclerViewWrapper.register(DividerItemModel::class.java, DividerItemViewBinder())
 
         Observable.defer { Observable.fromIterable(Constants.musicTypeList) }
                 .subscribeOn(Schedulers.io())
@@ -38,6 +41,7 @@ class MainActivity : BaseActivity() {
                             .doOnNext {
                                 items.add(it.billboard)
                                 items.addAll(it.song_list)
+                                items.add(DividerItemModel(20, R.color.divider))
                             }
                 }
                 .observeOn(AndroidSchedulers.mainThread())

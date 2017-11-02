@@ -1,7 +1,7 @@
 package com.sunfusheng.music.http
 
 import com.sunfusheng.music.Constants
-import com.sunfusheng.music.model.MusicResponse
+import com.sunfusheng.music.model.MusicResponseData
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -18,6 +18,6 @@ interface ApiService {
             @Query(Constants.PARAM_TYPE) type: Int,
             @Query(Constants.PARAM_SIZE) size: Int,
             @Query(Constants.PARAM_OFFSET) offset: Int
-    ): Observable<MusicResponse>
+    ): Observable<MusicResponseData>
 
 }

@@ -3,7 +3,7 @@ package com.sunfusheng.music.model
 /**
  * @author sunfusheng on 2017/10/30.
  */
-data class BillboardModel(
+data class MusicTitleModel(
         val billboard_type: String,
         val billboard_no: String,
         val update_date: String,

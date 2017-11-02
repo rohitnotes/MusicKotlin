@@ -11,7 +11,7 @@ import android.widget.ImageView
  */
 object ImageBlurUtil {
 
-    private val BLUR_RADIUS = 50
+    private val BLUR_RADIUS = 100
 
     fun blur(imageView: ImageView): Bitmap? {
         return blur(imageView.drawable)

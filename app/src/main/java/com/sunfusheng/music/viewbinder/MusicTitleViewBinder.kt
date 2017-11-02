@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.sunfusheng.glideimageview.GlideImageView
 import com.sunfusheng.music.R
-import com.sunfusheng.music.model.BillboardModel
+import com.sunfusheng.music.model.MusicTitleModel
 import com.sunfusheng.music.util.ImageBlurUtil
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -18,13 +18,13 @@ import me.drakeet.multitype.ItemViewBinder
 /**
  * @author sunfusheng on 2017/10/31.
  */
-class MusicTitleViewBinder : ItemViewBinder<BillboardModel, MusicTitleViewBinder.ViewHolder>() {
+class MusicTitleViewBinder : ItemViewBinder<MusicTitleModel, MusicTitleViewBinder.ViewHolder>() {
 
     override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup): ViewHolder {
         return ViewHolder(inflater.inflate(R.layout.item_music_title, parent, false))
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, item: BillboardModel) {
+    override fun onBindViewHolder(holder: ViewHolder, item: MusicTitleModel) {
         holder.ivPic.loadImage(item.pic_s192, R.color.placeholder)
                 .listener { percent, isDone, exception ->
                     if (isDone) {
