@@ -20,7 +20,7 @@ class DividerItemViewBinder : ItemViewBinder<DividerItemModel, DividerItemViewBi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, item: DividerItemModel) {
-        var layoutParams = holder.vDivider.layoutParams
+        val layoutParams = holder.vDivider.layoutParams
         layoutParams.height = DisplayUtil.dip2px(MainApplication.context, item.height.toFloat())
         holder.vDivider.layoutParams = layoutParams
 

@@ -25,7 +25,7 @@ class MusicItemViewBinder : ItemViewBinder<MusicItemModel, MusicItemViewBinder.V
         holder.tvTitle.text = item.title
         holder.tvAuthor.text = holder.tvAuthor.resources.getString(R.string.music_author_album, item.author, item.album_title)
         holder.ivPic.loadImage(item.pic_big, R.color.placeholder)
-        holder.ivMore.setOnClickListener({})
+        holder.ivMore.setOnClickListener {}
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
