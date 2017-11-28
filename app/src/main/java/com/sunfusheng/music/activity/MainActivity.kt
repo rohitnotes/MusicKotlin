@@ -48,5 +48,7 @@ class MainActivity : BaseActivity() {
                 .subscribe({
                     recyclerViewWrapper.setData(items)
                 }, Throwable::printStackTrace)
+
     }
+
 }
