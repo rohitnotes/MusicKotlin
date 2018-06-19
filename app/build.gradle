@@ -3,15 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
-
+    compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
         applicationId "com.sunfusheng.music"
-        minSdkVersion 14
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
     }
 
     compileOptions {
@@ -32,28 +30,28 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:design:26.1.0'
-    compile 'com.android.support:recyclerview-v7:26.1.0'
-    compile 'com.android.support:support-v4:26.1.0'
-    compile 'com.android.support:support-v13:26.1.0'
-    compile 'com.android.support:palette-v7:26.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api 'com.android.support:appcompat-v7:' + rootProject.supportLibraryVersion
+    api 'com.android.support:design:' + rootProject.supportLibraryVersion
+    api 'com.android.support:recyclerview-v7:' + rootProject.supportLibraryVersion
+    api 'com.android.support:support-v4:' + rootProject.supportLibraryVersion
+    api 'com.android.support:support-v13:' + rootProject.supportLibraryVersion
+    api 'com.android.support:palette-v7:' + rootProject.supportLibraryVersion
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile 'com.orhanobut:logger:2.1.1'
-    compile 'com.sunfusheng:glideimageview:1.2.0'
-    compile 'me.drakeet.multitype:multitype:3.3.3'
+    api 'com.orhanobut:logger:2.1.1'
+    api 'com.sunfusheng:glideimageview:1.2.0'
+    api 'me.drakeet.multitype:multitype:3.4.2'
 
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    api 'com.squareup.okhttp3:okhttp:3.9.0'
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
-    compile 'io.reactivex.rxjava2:rxjava:2.1.5'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.trello.rxlifecycle2:rxlifecycle:2.2.0'
-    compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.0'
-    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.0'
+    api 'io.reactivex.rxjava2:rxjava:2.1.5'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api 'com.trello.rxlifecycle2:rxlifecycle:2.2.0'
+    api 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.0'
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.0'
 }
